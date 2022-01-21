@@ -24,6 +24,9 @@ using QuantConnect.Logging;
 using QuantConnect.Packets;
 using QuantConnect.Util;
 
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
 namespace QuantConnect.Lean.Launcher
 {
     public class Program
@@ -47,16 +50,31 @@ namespace QuantConnect.Lean.Launcher
 
         static void Main(string[] args)
         {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            string port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            string url = String.Concat("http://0.0.0.0:", port);
+            
+            return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>().UseUrls(url);
+                });
+        }
+
+        public static void Run(){
             if (OS.IsWindows)
             {
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
             }
 
             // expect first argument to be config file name
-            if (args.Length > 0)
-            {
-                Config.MergeCommandLineArgumentsWithConfiguration(LeanArgumentParser.ParseArguments(args));
-            }
+            //if (args.Length > 0)
+            //{
+            //    Config.MergeCommandLineArgumentsWithConfiguration(LeanArgumentParser.ParseArguments(args));
+            //}
 
             var liveMode = Config.GetBool("live-mode");
             //Name thread for the profiler:
@@ -70,6 +88,7 @@ namespace QuantConnect.Lean.Launcher
             job = leanEngineSystemHandlers.JobQueue.NextJob(out assemblyPath);
 
             leanEngineAlgorithmHandlers = Initializer.GetAlgorithmHandlers();
+            Log.Trace("STARTING 2");
 
             if (job == null)
             {
@@ -112,7 +131,6 @@ namespace QuantConnect.Lean.Launcher
                 Exit(algorithmStatus != AlgorithmStatus.Completed ? 1 : 0);
             }
         }
-
         public static void ExitKeyPress(object sender, ConsoleCancelEventArgs args)
         {
             // Allow our process to resume after this event

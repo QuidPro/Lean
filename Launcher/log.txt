@@ -1,0 +1,22 @@
+2022-01-21T11:35:44.7093270Z TRACE:: Config.Get(): Configuration key not found. Key: data-directory - Using default value: ../../../Data/
+2022-01-21T11:35:44.7434340Z TRACE:: Config.Get(): Configuration key not found. Key: version-id - Using default value: 
+2022-01-21T11:35:44.7436880Z TRACE:: Config.Get(): Configuration key not found. Key: cache-location - Using default value: ../../../Data/
+2022-01-21T11:35:44.7440020Z TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit) Host: Martins-MacBook-Pro-2
+2022-01-21T11:35:44.8388470Z TRACE:: Engine.Main(): Started 13:35
+2022-01-21T11:35:44.8562370Z TRACE:: Config.Get(): Configuration key not found. Key: lean-manager-type - Using default value: LocalLeanManager
+2022-01-21T11:35:45.4659280Z TRACE:: JobQueue.NextJob(): Selected QuantConnect.Algorithm.CSharp.dll
+2022-01-21T11:35:46.2679640Z TRACE:: Config.GetValue(): scheduled-event-leaky-bucket-capacity - Using default value: 120
+2022-01-21T11:35:46.2683940Z TRACE:: Config.GetValue(): scheduled-event-leaky-bucket-time-interval-minutes - Using default value: 1440
+2022-01-21T11:35:46.2691230Z TRACE:: Config.GetValue(): scheduled-event-leaky-bucket-refill-amount - Using default value: 18
+2022-01-21T11:35:46.2709640Z TRACE:: Config.Get(): Configuration key not found. Key: algorithm-id - Using default value: BasicTemplateFrameworkAlgorithm
+2022-01-21T11:37:18.1133540Z TRACE:: Config.Get(): Configuration key not found. Key: data-directory - Using default value: ../../../Data/
+2022-01-21T11:37:18.1553930Z TRACE:: Config.Get(): Configuration key not found. Key: version-id - Using default value: 
+2022-01-21T11:37:18.1556840Z TRACE:: Config.Get(): Configuration key not found. Key: cache-location - Using default value: ../../../Data/
+2022-01-21T11:37:18.1559410Z TRACE:: Engine.Main(): LEAN ALGORITHMIC TRADING ENGINE v2.5.0.0 Mode: DEBUG (64bit) Host: Martins-MacBook-Pro-2
+2022-01-21T11:37:18.2155690Z TRACE:: Engine.Main(): Started 13:37
+2022-01-21T11:37:18.2506640Z TRACE:: Config.Get(): Configuration key not found. Key: lean-manager-type - Using default value: LocalLeanManager
+2022-01-21T11:37:18.2870200Z TRACE:: JobQueue.NextJob(): Selected QuantConnect.Algorithm.CSharp.dll
+2022-01-21T11:37:18.5040410Z TRACE:: Config.GetValue(): scheduled-event-leaky-bucket-capacity - Using default value: 120
+2022-01-21T11:37:18.5042270Z TRACE:: Config.GetValue(): scheduled-event-leaky-bucket-time-interval-minutes - Using default value: 1440
+2022-01-21T11:37:18.5043490Z TRACE:: Config.GetValue(): scheduled-event-leaky-bucket-refill-amount - Using default value: 18
+2022-01-21T11:37:18.5045540Z TRACE:: Config.Get(): Configuration key not found. Key: algorithm-id - Using default value: BasicTemplateFrameworkAlgorithm
