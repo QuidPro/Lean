@@ -30,11 +30,13 @@ namespace QuantConnect.Lean.Launcher
                 endpoints.MapGet("/", async context =>
                 {
                     //TODO: Get bot Id from URL and set
-                    Console.WriteLine(context);
-                    //Program.Run();
-                    //var target = Environment.GetEnvironmentVariable("TARGET") ?? "World";
-                    await context.Response.WriteAsync($"Hello World!\n");
-
+                    //localhost:8080?{botId}
+                    char[] ignoreChars = { '?' };
+                    string botId = context.Request.QueryString.Value.TrimStart(ignoreChars);
+                    Console.WriteLine(botId);
+                    Environment.SetEnvironmentVariable("BOT_ID", botId);
+                    Program.Run();
+                    await context.Response.WriteAsync($"Backtest started!\n");
                 });
             });
         }
