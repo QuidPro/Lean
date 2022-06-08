@@ -377,6 +377,10 @@ namespace QuantConnect.Lean.Engine.Results
                 //Place result into storage.
                 StoreResult(result);
 
+                
+                // TODO: store result to firebase
+                
+
                 result.Results.ServerStatistics = GetServerStatistics(utcNow);
                 //Second, send the truncated packet:
                 MessagingHandler.Send(result);
