@@ -32,9 +32,21 @@ namespace QuantConnect.Lean.Launcher
                     //TODO: Get bot Id from URL and set
                     //localhost:8080?{botId}
                     char[] ignoreChars = { '?' };
-                    string botId = context.Request.QueryString.Value.TrimStart(ignoreChars);
+                    System.Collections.Specialized.NameValueCollection parsedString = System.Web.HttpUtility.ParseQueryString(context.Request.QueryString.Value);
+                    string botId = parsedString.Get("botId");
+                    string startTime = parsedString.Get("startTime");
+                    string endTime = parsedString.Get("endTime");
                     Console.WriteLine(botId);
-                    Environment.SetEnvironmentVariable("BOT_ID", botId);
+                    Console.WriteLine(startTime);
+                    Console.WriteLine(endTime);
+
+                    
+                    string json = $"{{ \"botId\":\"{botId}\",\"startTime\":\"{startTime}\",\"endTime\":\"{endTime}\"}}";
+                    System.IO.File.WriteAllText(@"/Storage/data.json", json);
+
+                    Environment.SetEnvironmentVariable("BOT_ID", botId,EnvironmentVariableTarget.Machine);
+                    Environment.SetEnvironmentVariable("START_TIME", startTime, EnvironmentVariableTarget.Machine);
+                    Environment.SetEnvironmentVariable("END_TIME", endTime, EnvironmentVariableTarget.Machine);
                     Program.Run();
                     await context.Response.WriteAsync($"Backtest started!\n");
                 });
